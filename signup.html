@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - TravelCo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <style>
+        /* === CSS VARIABLES & GLOBAL STYLES === */
+        :root {
+            --primary-color: #FF6740;
+            --secondary-color: #0A2540;
+            --light-gray-color: #F6F9FC;
+            --text-color: #525f7f;
+            --white-color: #ffffff;
+            --border-color: #e6e6e6;
+            --border-radius: 8px;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-gray-color);
+        }
+
+        /* === SIGN-UP PAGE LAYOUT === */
+        .signup-container {
+            display: grid;
+            min-height: 100vh;
+            /* Mobile-first: 1 column */
+            grid-template-columns: 1fr;
+        }
+
+        .image-panel {
+            display: none; /* Hidden on mobile for a form-first experience */
+        }
+        
+        .image-panel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .form-panel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            background-color: var(--white-color);
+        }
+
+        .form-content {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* === FORM STYLING === */
+        .form-content h1 {
+            color: var(--secondary-color);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .form-content p {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 103, 64, 0.2);
+        }
+
+        .signup-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: var(--border-radius);
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .signup-btn:hover {
+            opacity: 0.9;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 2rem 0;
+            color: #ccc;
+        }
+        
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .divider:not(:empty)::before {
+            margin-right: .25em;
+        }
+        
+        .divider:not(:empty)::after {
+            margin-left: .25em;
+        }
+        
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .social-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-btn:hover {
+            background-color: var(--light-gray-color);
+            border-color: #ccc;
+        }
+        
+        .login-link {
+            text-align: center;
+        }
+
+        .login-link a {
+            color: var(--primary-color);
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        /* === RESPONSIVE CSS for Tablets and Desktops === */
+        @media (min-width: 900px) {
+            .signup-container {
+                /* Two-column layout */
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .image-panel {
+                /* Show the image panel on larger screens */
+                display: block;
+            }
+
+            .form-panel {
+                background-color: var(--white-color); /* Ensure it's white if body bg changes */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="signup-container">
+        <div class="image-panel">
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070" alt="Mountain landscape with a lake">
+        </div>
+
+        <div class="form-panel">
+            <div class="form-content">
+                <h1>Create Your Account</h1>
+                <p>Join us and start your next adventure!</p>
+
+                <form>
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter at least 8 characters" required>
+                    </div>
+                    <button type="submit" class="signup-btn">Create Account</button>
+                </form>
+
+                <div class="divider">or</div>
+
+                <div class="social-login">
+                    <a href="#" class="social-btn"><i class="fab fa-google"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-apple"></i></a>
+                </div>
+
+                <p class="login-link">
+                    Already have an account? <a href="#">Log In</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
